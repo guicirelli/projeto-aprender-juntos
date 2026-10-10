@@ -1,20 +1,25 @@
 # Projeto Aprender Juntos
 
-MVP acadêmico de uma aplicação web para organizar alunos, turmas, horários e registros de presença de uma iniciativa comunitária de reforço escolar.
+Este projeto é uma aplicação web criada para ajudar uma iniciativa comunitária de reforço escolar a organizar alunos, turmas, horários e presenças.
 
-## Escopo
+O projeto faz parte da disciplina Projeto de Software. A proposta está relacionada ao ODS 4, Educação de Qualidade, principalmente à Meta 4.5.
 
-- cadastrar, consultar e remover alunos;
-- cadastrar, consultar e remover turmas;
-- organizar dias e horários;
-- registrar presença e ausência;
-- consultar o resultado do registro;
-- manter os dados no navegador durante a demonstração;
-- apresentar uma interface responsiva e acessível.
+## O que o sistema faz
 
-O projeto mantém o ODS 4 — Educação de Qualidade, especialmente a Meta 4.5. Integrações com WhatsApp, pagamentos, aplicativo móvel nativo e recursos pedagógicos avançados estão fora do escopo do MVP.
+Atualmente, o sistema permite:
 
-## Tecnologias
+- cadastrar alunos;
+- consultar alunos cadastrados;
+- remover alunos;
+- cadastrar turmas e horários;
+- remover turmas;
+- registrar alunos presentes ou ausentes;
+- visualizar o resultado do registro;
+- usar a aplicação em computador ou celular.
+
+Quando o sistema é aberto pela primeira vez, ele começa sem alunos, turmas ou presenças. Os dados adicionados ficam salvos no navegador usado durante a demonstração.
+
+## Tecnologias utilizadas
 
 - Angular;
 - TypeScript;
@@ -22,32 +27,84 @@ O projeto mantém o ODS 4 — Educação de Qualidade, especialmente a Meta 4.5.
 - Angular Router;
 - CSS responsivo;
 - Git e GitHub;
-- GitHub Actions para build, testes e publicação.
+- GitHub Actions.
 
-Na Experiência Prática II, Supabase e PostgreSQL foram definidos como a solução de persistência da versão planejada. Nesta versão demonstrável, os dados são armazenados localmente no navegador para que o MVP funcione sem credenciais ou serviços externos. Nenhum segredo é versionado.
+Na Experiência Prática II, também foram planejados Supabase e PostgreSQL para uma versão com banco de dados remoto. Nesta versão de demonstração, preferi utilizar o armazenamento local do navegador para conseguir executar o MVP sem cadastrar chaves ou senhas de serviços externos.
 
-## Executar localmente
+## Como executar no computador
+
+### 1. Instalar o Node.js
+
+Caso ainda não esteja instalado, baixe o Node.js no site oficial:
+
+<https://nodejs.org/>
+
+Depois da instalação, abra o PowerShell ou o terminal.
+
+### 2. Baixar o projeto
+
+Na página do GitHub, clique em **Code**, depois em **Download ZIP**. Extraia o arquivo em uma pasta do computador.
+
+Também é possível baixar usando o Git:
+
+```bash
+git clone https://github.com/guicirelli/projeto-aprender-juntos.git
+cd projeto-aprender-juntos
+```
+
+### 3. Instalar as dependências
+
+Dentro da pasta do projeto, execute:
 
 ```bash
 npm install
+```
+
+Esse comando instala os pacotes necessários para executar a aplicação.
+
+### 4. Iniciar o sistema
+
+Ainda dentro da pasta do projeto, execute:
+
+```bash
 npm start
 ```
 
-## Verificações de qualidade
+Depois, abra o endereço mostrado no terminal. Normalmente ele é:
+
+<http://localhost:4200/>
+
+### 5. Usar a aplicação
+
+1. Acesse a opção **Turmas** e cadastre uma turma.
+2. Acesse **Alunos** e cadastre um aluno.
+3. Entre em **Registrar presença**.
+4. Escolha a turma e a data.
+5. Marque cada aluno como presente ou ausente.
+6. Clique em **Salvar presença**.
+
+## Testes e build
+
+Para executar os testes automatizados:
 
 ```bash
-npm run build
 npm test -- --watch=false
 ```
 
-## Publicação
+Para verificar se o projeto consegue ser compilado:
 
-O projeto é publicado pelo GitHub Pages:
+```bash
+npm run build
+```
+
+## Publicação online
+
+A versão publicada pode ser acessada pelo GitHub Pages:
 
 <https://guicirelli.github.io/projeto-aprender-juntos/>
 
-O pipeline do GitHub Actions executa os testes, gera o build e publica a aplicação após uma alteração na branch `main`.
+O GitHub Actions executa os testes, cria o build e publica a aplicação quando há uma atualização na branch principal.
 
-## Evidências da Experiência III
+## Limites da versão atual
 
-O histórico do Git registra a evolução do MVP com commits semânticos. O repositório é público para permitir a avaliação acadêmica. Os dados cadastrados durante a demonstração são informados pelo usuário e ficam armazenados localmente no navegador.
+Esta versão é um MVP acadêmico. Ela ainda não possui login, banco remoto ou integração com WhatsApp. Essas funcionalidades ficaram fora do escopo inicial para manter o projeto pequeno e possível de desenvolver dentro da experiência prática.
