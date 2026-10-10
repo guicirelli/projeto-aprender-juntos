@@ -14,6 +14,7 @@ export class App {
   protected readonly students = signal<Student[]>([]);
   protected readonly classes = signal<ClassGroup[]>([]);
   protected readonly attendance = signal<Attendance[]>([]);
+  protected readonly lastSaved = signal<Attendance | null>(null);
   protected readonly selectedClassId = signal(0);
   protected readonly selectedDate = signal('2026-08-14');
   protected readonly form = { name: '', age: null as number | null, grade: '', guardian: '', classId: 0 };
@@ -33,6 +34,8 @@ export class App {
 
   protected filteredStudents(): Student[] { const term = this.search().toLowerCase(); return this.students().filter((s) => s.name.toLowerCase().includes(term)); }
   protected className(id: number): string { return this.classes().find((c) => c.id === id)?.name ?? 'Sem turma'; }
+  protected studentName(id: number): string { return this.students().find((s) => s.id === id)?.name ?? 'Aluno removido'; }
+  protected recordsForClass(classId: number): Attendance[] { return this.attendance().filter((a) => a.classId === classId).sort((a, b) => b.date.localeCompare(a.date)); }
   protected studentsInSelectedClass(): Student[] { return this.students().filter((s) => s.classId === this.selectedClassId()); }
   protected setSection(section: 'inicio'|'alunos'|'turmas'|'presenca'|'historico'): void { this.message.set(''); this.activeSection.set(section); }
   protected addStudent(): void {
@@ -50,7 +53,7 @@ export class App {
     if (!this.selectedDate() || group.some((s) => draft[s.id] === null || draft[s.id] === undefined)) { this.message.set('Marque presente ou ausente para todos os alunos.'); return; }
     const date = this.selectedDate(); const classId = this.selectedClassId(); const kept = this.attendance().filter((a) => !(a.classId === classId && a.date === date));
     const newRows = group.map((s) => ({ id: Date.now() + s.id, studentId: s.id, classId, date, present: draft[s.id] === true, note: '' }));
-    this.attendance.set([...kept, ...newRows]); this.saveData(); this.message.set('Presença registrada com sucesso.');
+    this.attendance.set([...kept, ...newRows]); this.lastSaved.set(newRows[0] ?? null); this.saveData(); this.message.set('Presença registrada com sucesso.'); this.setSection('historico');
   }
   protected recordsForStudent(studentId: number): Attendance[] { return this.attendance().filter((a) => a.studentId === studentId).sort((a, b) => b.date.localeCompare(a.date)); }
   protected presentCount(): number { return this.attendance().filter((a) => a.present).length; }

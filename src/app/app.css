@@ -2,3 +2,4 @@
 :host{display:flex;flex-direction:column}
 .home-content,.app-shell{flex:1}
 .remove-button{border:1px solid #d27a7a;background:#fff0f0;color:#a12d2d;border-radius:5px;padding:8px 12px;cursor:pointer}.empty{margin:20px 0;padding:22px;border:1px dashed #aeb8c4;color:#687483;background:#fafbfc;text-align:center}
+.red-pill{display:inline-block;background:#ffd9df;color:#a51d2c;border-radius:12px;padding:4px 12px;font-weight:700;width:max-content}
