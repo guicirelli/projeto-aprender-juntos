@@ -12,19 +12,20 @@ export class App {
   protected readonly message = signal('');
   protected readonly search = signal('');
   protected readonly students = signal<Student[]>([
+    { id: 4, name: 'Lucas Ferreira', age: 12, grade: '7º ano', classId: 1, guardian: 'Responsável fictício', active: true },
     { id: 1, name: 'Ana Souza', age: 12, grade: '7º ano', classId: 1, guardian: 'Responsável fictício', active: true },
     { id: 2, name: 'Bruno Lima', age: 13, grade: '8º ano', classId: 1, guardian: 'Responsável fictício', active: true },
     { id: 3, name: 'Carla Santos', age: 12, grade: '7º ano', classId: 2, guardian: 'Responsável fictício', active: true },
   ]);
   protected readonly classes = signal<ClassGroup[]>([
-    { id: 1, name: 'Matemática - terça', subject: 'Matemática', day: 'Terça-feira', time: '14h às 15h', volunteer: 'João (fictício)', capacity: 10 },
+    { id: 1, name: 'Reforço de Matemática', subject: 'Matemática', day: 'Terça-feira', time: '14h às 15h', volunteer: 'João (fictício)', capacity: 10 },
     { id: 2, name: 'Português - quinta', subject: 'Língua Portuguesa', day: 'Quinta-feira', time: '14h às 15h', volunteer: 'Maria (fictícia)', capacity: 10 },
   ]);
   protected readonly attendance = signal<Attendance[]>([]);
   protected readonly selectedClassId = signal(1);
-  protected readonly selectedDate = signal(new Date().toISOString().slice(0, 10));
+  protected readonly selectedDate = signal('2026-08-14');
   protected readonly form = { name: '', age: null as number | null, grade: '', guardian: '', classId: 1 };
-  protected readonly attendanceDraft = signal<Record<number, boolean | null>>({});
+  protected readonly attendanceDraft = signal<Record<number, boolean | null>>({ 4: true, 1: true, 2: false });
 
   protected filteredStudents(): Student[] { const term = this.search().toLowerCase(); return this.students().filter((s) => s.name.toLowerCase().includes(term)); }
   protected className(id: number): string { return this.classes().find((c) => c.id === id)?.name ?? 'Sem turma'; }
