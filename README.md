@@ -108,3 +108,9 @@ O GitHub Actions executa os testes, cria o build e publica a aplicação quando 
 ## Limites da versão atual
 
 Esta versão é um MVP acadêmico. Ela ainda não possui login, banco remoto ou integração com WhatsApp. Essas funcionalidades ficaram fora do escopo inicial para manter o projeto pequeno e possível de desenvolver dentro da experiência prática.
+
+## Revisão técnica do MVP
+
+Antes da integração com a branch principal, a implementação foi revisada considerando a separação das telas por rotas, a reutilização dos serviços de dados e a atualização da interface após cada operação. Também foram conferidos os fluxos de cadastro, remoção, registro de presença e consulta do resultado.
+
+Na parte de segurança, a aplicação não versiona senhas, tokens ou chaves de serviços externos. Os dados da demonstração são fictícios e ficam somente no armazenamento local do navegador. Os formulários usam validações básicas e o escopo reduzido evita incluir integrações que não foram necessárias para o MVP.
