@@ -1,59 +1,38 @@
-# ProjetoAprenderJuntos
+# Projeto Aprender Juntos
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.2.
+MVP acadêmico de uma aplicação web para organizar alunos, turmas, horários e registros de presença de uma iniciativa comunitária de reforço escolar.
 
-## Development server
+## Escopo
 
-To start a local development server, run:
+- cadastro e consulta de alunos;
+- organização de turmas e horários;
+- registro de presença e ausência;
+- consulta do histórico de presença;
+- interface responsiva e acessível;
+- dados fictícios para demonstração.
 
-```bash
-ng serve
-```
+O projeto mantém o ODS 4 — Educação de Qualidade, Meta 4.5. Integrações com WhatsApp, pagamentos, aplicativo nativo e recursos pedagógicos avançados estão fora do MVP.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Stack
 
-## Code scaffolding
+Angular, TypeScript, Angular Forms, Angular Router, Bootstrap/CSS responsivo, Supabase e PostgreSQL.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Esta versão contém um adaptador local com dados fictícios para permitir demonstração sem credenciais. A integração com Supabase deve ser habilitada com variáveis de ambiente próprias; nenhum segredo é versionado.
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+## Executar localmente
 
 ```bash
-ng build
+npm install
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Quality gates:
 
 ```bash
-ng test
+npm run build
+npm test -- --watch=false
 ```
 
-## Running end-to-end tests
+## Evidências da Experiência III
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+O histórico do Git registra a evolução do MVP. O repositório é público para permitir avaliação acadêmica. Dados usados na demonstração são fictícios.
